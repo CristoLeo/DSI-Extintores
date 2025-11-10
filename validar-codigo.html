@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validar Código | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos CSS del paso 2 (similares a login.html) */
+        :root {
+            --color-primario: #B30000;
+            --color-secundario: #444444;
+            --color-fondo: #f5f5f5;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-fondo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .container h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primario);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            text-transform: uppercase; /* Para códigos */
+            letter-spacing: 2px;
+        }
+        .submit-button {
+            background-color: var(--color-primario);
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html"><img src="assets/DSI logo.jpg" alt="DSI Extintores Logo" style="height: 70px; margin-bottom: 1.5rem;"></a>
+        <h2>Paso 2: Verificar Código</h2>
+        <p id="info-email" style="font-size: 0.9rem; margin-bottom: 2rem;">Ingresa el código que te enviamos al correo electrónico.</p>
+        
+        <form id="validation-form">
+            <div class="form-group">
+                <label for="verification-code">Código de 6 caracteres</label>
+                <input type="text" id="verification-code" name="verification-code" required maxlength="6" placeholder="EJ: ABC123D">
+            </div>
+            <button type="submit" class="submit-button">Validar Código</button>
+        </form>
+
+        <div class="back-link">
+            <a href="recuperar-password.html">Volver a enviar código</a>
+        </div>
+    </div>
+
+    <script>
+        const validationForm = document.getElementById('validation-form');
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        
+        if (email) {
+            document.getElementById('info-email').textContent = `Ingresa el código que te enviamos a: ${decodeURIComponent(email)}`;
+        }
+
+        validationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const code = document.getElementById('verification-code').value.trim().toUpperCase();
+            const recoveryData = JSON.parse(localStorage.getItem('recoveryToken'));
+            
+            if (!recoveryData) {
+                alert('Error de sesión. Por favor, inicia el proceso de recuperación de nuevo.');
+                return;
+            }
+
+            // 1. Verificar caducidad
+            if (Date.now() > recoveryData.expires) {
+                alert('Error: El código ha caducado. Vuelve a solicitar la recuperación.');
+                localStorage.removeItem('recoveryToken');
+                window.location.href = 'recuperar-password.html';
+                return;
+            }
+
+            // 2. Verificar código y correo
+            if (code === recoveryData.code && recoveryData.email === email) {
+                alert('✅ Código validado correctamente. Serás redirigido para establecer tu nueva contraseña.');
+                
+                // Generar un token de uso único (simulación de autorización)
+                const authResetToken = Math.random().toString(36).substring(2, 12);
+                
+                // Guardar la autorización para el siguiente paso
+                localStorage.setItem('resetAuth', JSON.stringify({ email: email, token: authResetToken, used: false }));
+                localStorage.removeItem('recoveryToken'); // Código consumido
+                
+                // Redirigir al paso 3
+                window.location.href = `nueva-password.html?token=${authResetToken}`;
+
+            } else {
+                alert('Error: Código de verificación incorrecto. Intenta de nuevo.');
+            }
+        });
+    </script>
+
+</body>
+</html>

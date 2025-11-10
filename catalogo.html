@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght(400;700)&family=Playfair+Display:wght(700)&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para la página del catálogo */
+        .pdf-container {
+            width: 100%;
+            height: 80vh; /* Ocupa el 80% del alto de la ventana */
+            max-width: 1200px;
+            margin: 2rem auto;
+            border: 1px solid var(--color-secundario);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #descarga-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    
+<header>
+    <nav>
+        <div class="logo">
+            <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+        <ul id="main-nav">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#quienes">¿Quiénes Somos?</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos</a>
+                <div class="dropdown-content-prod">
+                    <a href="productos-pqs.html">Extintores de PQS</a>
+                    <a href="productos-agua.html">Extintores de Agua</a>
+                    <a href="productos-co2.html">Extintores de CO2</a>
+                    <a href="productos-hfc.html">Extintores de HFC236-fa</a>
+                    <a href="catalogo.html" style="font-weight: bold; background-color: #008080;">Ver Catálogo (PDF)</a> 
+                </div>
+            </li>
+            <li><a href="index.html#noticias">Noticias</a></li>
+            <li><a href="index.html#resenas">Reseñas</a></li>
+            <li><a href="index.html#contacto">Contáctenos</a></li>
+        </ul>
+        <div style="display: flex; align-items: center;">
+            <div id="auth-container"><a href="login.html" class="auth-link">Iniciar Sesión</a></div>
+            <div class="carrito" onclick="verCarrito()">🛒 Carrito (<span id="contador-carrito">0</span>)</div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="catalogo-view" class="fade-in" style="min-height: 85vh;">
+        <h2>Catálogo Completo de Productos DSI</h2>
+        <p style="text-align:center; max-width: 800px; margin: 1rem auto 1rem;">Puedes ver y descargar nuestro catálogo oficial a continuación:</p>
+
+        <div class="pdf-container">
+            <iframe 
+                src="assets/CATALOGO productos.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                title="Catálogo DSI Extintores" 
+                allowfullscreen>
+                El navegador no soporta la visualización del PDF.
+            </iframe>
+        </div>
+        
+        <div id="descarga-link">
+             <a href="assets/CATALOGO productos.pdf" download="CATALOGO productos DSI.pdf" class="boton-contacto-prod">
+                Descargar Catálogo (PDF) ⬇️
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+</footer>
+<div class="flotante" id="flotante"><a href="https://wa.me/5510425895" target="_blank">🟢</a><a href="mailto:cristoleo8@outlook.com" class="correo">✉️</a></div>
+<script src="script.js" defer></script>
+</body>
+</html>

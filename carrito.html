@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cotización - DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #B30000;
+            --color-secundario: #444444;
+            --color-fondo: #f0f0f0;
+            --color-texto: #222222;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--color-fondo);
+            padding: 2rem 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primario);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .cotizacion-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+        /* --- Formulario de Datos --- */
+        .datos-cliente .form-group { margin-bottom: 1.5rem; }
+        .datos-cliente label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-secundario); }
+        .datos-cliente input, .datos-cliente textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        /* --- Lista de Productos --- */
+        .resumen-productos {
+            background-color: var(--color-fondo);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        .resumen-productos h3 { color: var(--color-secundario); margin-top: 0; }
+        .lista-productos { max-height: 400px; overflow-y: auto; }
+        
+        .item-carrito {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #ddd;
+        }
+        .item-details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1; /* Permite que tome el espacio necesario */
+        }
+        .item-carrito img { width: 50px; height: 50px; object-fit: contain; margin-right: 10px; border: 1px solid #ddd;}
+        .item-carrito span { font-weight: 500; font-size: 0.9rem; margin-right: 15px; }
+
+        /* Estilos de Control de Cantidad (NUEVOS) */
+        .control-cantidad {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-right: 10px;
+        }
+        .control-cantidad button {
+            background-color: var(--color-secundario);
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            line-height: 1;
+            padding: 0;
+            transition: background-color 0.2s;
+        }
+        .control-cantidad button:hover {
+            background-color: #008080;
+        }
+        .cantidad-actual {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+        /* Botón de eliminar todo */
+        .eliminar-todo-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background-color 0.3s;
+        }
+        .eliminar-todo-btn:hover { background-color: #d32f2f; }
+
+
+        .cotizar-button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 2rem;
+        }
+        .cotizar-button:hover { background-color: #1a9e4d; }
+        
+        @media (max-width: 768px) {
+            .cotizacion-grid { grid-template-columns: 1fr; }
+            .item-carrito { flex-direction: column; align-items: flex-start; }
+            .item-details { margin-bottom: 10px; }
+            .item-actions { display: flex; justify-content: space-between; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Solicitud de Cotización</h2>
+        <a href="index.html" style="display:block; text-align:center; margin-bottom:1.5rem; color:var(--color-primario); text-decoration:none;">← Volver a DSI Extintores</a>
+        <div class="cotizacion-grid">
+            
+            <div class="datos-cliente">
+                <h3>1. Datos de Envío</h3>
+                <form id="cotizacion-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico (Para cotización)</label>
+                        <input type="email" id="email" name="email" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono de Contacto</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Dirección de Entrega</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Calle, número, colonia, código postal y referencias" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notas Adicionales (Opcional)</label>
+                        <textarea id="notes" name="notes" rows="2" placeholder="Ej: Horario de entrega preferido, datos de facturación"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="cotizar-button">Enviar Solicitud de Cotización</button>
+                </form>
+            </div>
+
+            <div class="resumen-productos">
+                <h3>2. Productos Seleccionados (<span id="total-items">0</span>)</h3>
+                <div class="lista-productos" id="lista-productos">
+                    <p id="carrito-vacio-msg" style="text-align:center;">Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const listaProductos = document.getElementById('lista-productos');
+        const totalItems = document.getElementById('total-items');
+
+        // Función para cargar los datos del cliente
+        function loadUserData() {
+            if (currentUser) {
+                document.getElementById('name').value = currentUser.name || '';
+                document.getElementById('email').value = currentUser.email || '';
+                document.getElementById('phone').value = currentUser.phone || '';
+                document.getElementById('address').value = currentUser.address || '';
+            } else {
+                document.getElementById('name').readOnly = false;
+                document.getElementById('email').readOnly = false;
+                // No mostrar alerta, solo permitir editar
+            }
+        }
+        
+        // Función auxiliar para notificar a la ventana principal
+        function notifyOpener() {
+            if (window.opener && window.opener.updateCartCounter) {
+                window.opener.updateCartCounter();
+            }
+        }
+
+        // ----------------------------------------------------
+        // NUEVAS FUNCIONES DE CONTROL DE CANTIDAD
+        // ----------------------------------------------------
+        
+        /**
+         * Suma o resta un solo producto al carrito y actualiza la vista.
+         * @param {string} id - ID del producto a modificar.
+         * @param {number} delta - +1 para sumar, -1 para restar.
+         */
+        window.changeQuantity = function(id, delta) {
+            // Asegura que el ID sea string
+            const idString = String(id); 
+            
+            if (delta === 1) {
+                // SUMAR: Buscamos un producto existente con ese ID para replicar sus datos (nombre, img)
+                const itemTemplate = carrito.find(item => String(item.id) === idString);
+                
+                if (itemTemplate) {
+                    const newItem = {
+                        id: itemTemplate.id,
+                        nombre: itemTemplate.nombre,
+                        imagenSrc: itemTemplate.imagenSrc
+                    };
+                    carrito.push(newItem);
+                }
+            } else if (delta === -1) {
+                // RESTAR: Buscar la ÚLTIMA instancia y eliminarla
+                const indexToRemove = carrito.map(item => String(item.id)).lastIndexOf(idString);
+                
+                if (indexToRemove !== -1) {
+                    carrito.splice(indexToRemove, 1);
+                } else {
+                    // Si no hay productos, no hacemos nada.
+                    return; 
+                }
+            }
+            
+            // Guardar y actualizar
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            loadCart();
+            notifyOpener();
+        }
+
+        /**
+         * Elimina TODAS las instancias de un producto específico del carrito.
+         * @param {string} id - ID del producto a eliminar.
+         */
+        window.removeAllItems = function(id) {
+            const idString = String(id);
+            
+            // Filtra para mantener solo los productos que NO coincidan con el ID
+            carrito = carrito.filter(item => String(item.id) !== idString);
+            
+            // Guardar y actualizar
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            loadCart();
+            notifyOpener();
+        }
+
+
+        // ----------------------------------------------------
+        // Función para cargar la lista de productos (MODIFICADA)
+        // ----------------------------------------------------
+        function loadCart() {
+            listaProductos.innerHTML = '';
+            
+            // 1. Agrupar productos por ID para contar la cantidad
+            const groupedCarrito = carrito.reduce((acc, item) => {
+                const id = String(item.id);
+                if (!acc[id]) {
+                    acc[id] = {
+                        id: id,
+                        nombre: item.nombre,
+                        imagenSrc: item.imagenSrc,
+                        cantidad: 0
+                    };
+                }
+                acc[id].cantidad++;
+                return acc;
+            }, {});
+
+            const validItems = Object.values(groupedCarrito);
+            
+            // 2. Actualizar contador total
+            totalItems.textContent = validItems.length;
+
+            if (validItems.length === 0) {
+                listaProductos.innerHTML = '<p style="text-align:center;">Tu carrito está vacío. <a href="index.html">Agrega productos</a>.</p>';
+                document.querySelector('.cotizar-button').disabled = true;
+                return;
+            }
+            document.querySelector('.cotizar-button').disabled = false;
+
+            // 3. Renderizar la lista agrupada
+            validItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item-carrito';
+                itemDiv.innerHTML = `
+                    <div class="item-details">
+                        <img src="${item.imagenSrc}" alt="${item.nombre}">
+                        <span>${item.nombre}</span>
+                    </div>
+                    <div class="item-actions">
+                        <div class="control-cantidad">
+                            <button onclick="changeQuantity('${item.id}', -1)" aria-label="Restar uno">−︎</button>
+                            <span class="cantidad-actual">${item.cantidad}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)" aria-label="Sumar uno">+</button>
+                        </div>
+                        <button class="eliminar-todo-btn" onclick="removeAllItems('${item.id}')">Eliminar todo</button>
+                    </div>
+                `;
+                listaProductos.appendChild(itemDiv);
+            });
+        }
+
+        // ----------------------------------------------------
+        // Enviar cotización (Sin cambios mayores, pero usa la lista agrupada)
+        // ----------------------------------------------------
+        document.getElementById('cotizacion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const validCarrito = carrito.filter(item => item.id);
+
+            if (validCarrito.length === 0) {
+                alert('No puedes enviar una cotización sin productos en el carrito.');
+                return;
+            }
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const notes = document.getElementById('notes').value;
+
+            // Agrupar productos para el cuerpo del email
+            const conteoProductos = validCarrito.reduce((acc, item) => {
+                acc[item.nombre] = (acc[item.nombre] || 0) + 1;
+                return acc;
+            }, {});
+
+            
+            let emailBody = `¡Nueva Solicitud de Cotización de DSI Extintores!\n\n`;
+            emailBody += `--- DATOS DEL CLIENTE ---\n`;
+            emailBody += `Nombre: ${name}\n`;
+            emailBody += `Email: ${email}\n`;
+            emailBody += `Teléfono: ${phone}\n`;
+            emailBody += `Dirección de Envío: ${address}\n`;
+            if (notes) emailBody += `Notas Adicionales: ${notes}\n`;
+            emailBody += `\n--- PRODUCTOS SOLICITADOS (Total: ${validCarrito.length} unidades) ---\n`;
+            
+            for (const [productoNombre, cantidad] of Object.entries(conteoProductos)) {
+                emailBody += `- ${productoNombre} (x${cantidad})\n`;
+            }
+
+            emailBody += `\n--- ACCIÓN REQUERIDA ---\n`;
+            emailBody += `Por favor, responde a este cliente con el precio y los detalles de envío.`;
+
+            const mailtoLink = `mailto:cristoleo8@outlook.com?subject=Nueva Cotización de ${name}&body=${encodeURIComponent(emailBody)}`;
+            
+            window.location.href = mailtoLink;
+
+            alert(`Tu solicitud de cotización ha sido generada y enviada a tu correo (${email}). Pronto recibirás la cotización en tu bandeja de entrada. \n\nEl carrito será vaciado.`);
+            
+            // Limpiar carrito después de enviar
+            localStorage.removeItem('carrito');
+            carrito = [];
+            loadCart();
+            notifyOpener();
+        });
+
+        // Inicializar
+        loadUserData();
+        loadCart();
+    </script>
+
+</body>
+</html>

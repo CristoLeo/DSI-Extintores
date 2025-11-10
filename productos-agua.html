@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Agua | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<header>
+    <nav>
+        <div class="logo">
+            <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+        <ul id="main-nav">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#quienes">¿Quiénes Somos?</a></li>
+            <li class="dropdown">
+                <a href="#productos-agua">Productos</a>
+                <div class="dropdown-content-prod">
+                    <a href="productos-pqs.html">Extintores de PQS</a>
+                    <a href="productos-agua.html">Extintores de Agua</a>
+                    <a href="productos-co2.html">Extintores de CO2</a>
+                    <a href="productos-hfc.html">Extintores de HFC236-fa</a>
+                    <a href="recargas-servicios.html">Recargas y Servicios</a>
+                    <a href="catalogo.html" style="font-weight: bold; background-color: #008080;">Ver Catálogo (PDF)</a>
+                </div>
+            </li>
+            <li><a href="index.html#noticias">Noticias</a></li>
+            <li><a href="index.html#resenas">Reseñas</a></li>
+            <li><a href="index.html#contacto">Contáctenos</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="auth-container"><a href="login.html" class="auth-link">Iniciar Sesión</a></div>
+            <a class="carrito" href="#" onclick="verCarrito()" role="button" aria-label="Ver carrito de compras">
+                🛒 Carrito (<span id="contador-carrito">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="productos-agua" class="fade-in">
+        <h2>Extintores de Agua Presurizada</h2>
+        <p style="text-align:center; max-width: 800px; margin: 1rem auto 2rem;">Diseñados exclusivamente para incendios Clase A (madera, papel, tela, basura). No deben usarse en fuegos de líquidos o eléctricos.</p>
+
+        <div class="productos">
+            <div class="producto" data-nombre="Extintor de Agua 9 L" data-id="agua-9l">
+                <img src="assets/Extintor de agua.jpg" alt="Extintor de Agua Portátil">
+                <h3>Extintor de Agua 9 L</h3>
+                <p style="font-size:0.9rem; color:#777;">Modelo portátil estándar para zonas de riesgo de materiales sólidos.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('agua-9l', 'Extintor de Agua 9 L', 'assets/Extintor de agua.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Unidad móvil de Agua 50 L" data-id="agua-50l-movil">
+                <img src="assets/unidad agua.jpg" alt="Unidad móvil de Agua 50 L">
+                <h3>Unidad móvil de Agua 50 L</h3>
+                <p style="font-size:0.9rem; color:#777;">Gran capacidad. Protección ideal para almacenes grandes de papel o textiles.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('agua-50l-movil', 'Unidad móvil de Agua 50 L', 'assets/unidad agua.jpg')">Agregar al Carrito</button>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:3rem;">
+            <a href="mailto:cristoleo8@outlook.com?subject=Solicitud%20de%20Cotización%20Agua" class="boton-contacto-prod">
+                Preguntas y Especificaciones 📞
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+</footer>
+
+<div class="flotante" id="flotante">
+    <a href="https://wa.me/5510425895" target="_blank" aria-label="WhatsApp de DSI"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:cristoleo8@outlook.com" class="correo" aria-label="Correo electrónico de DSI"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

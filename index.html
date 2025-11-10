@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DSI Extintores: La Seguridad de tu Mañana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <a href="index.html" aria-label="Ir a la página de inicio">
+                <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+        
+        <ul id="main-nav">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#quienes">¿Quiénes Somos?</a></li>
+            
+            <li class="dropdown">
+                <a href="#productos" aria-haspopup="true" aria-expanded="false">Productos</a>
+                <div class="dropdown-content-prod">
+                    <a href="productos-pqs.html">Extintores de PQS</a>
+                    <a href="productos-agua.html">Extintores de Agua</a>
+                    <a href="productos-co2.html">Extintores de CO2</a>
+                    <a href="productos-hfc.html">Extintores de HFC236-fa</a>
+                    <a href="recargas-servicios.html" style="font-weight: bold; background-color: #008080;">Recargas y Servicios</a>
+                    <a href="catalogo.html" style="font-weight: bold; background-color: #008080;">Ver Catálogo (PDF)</a>
+                </div>
+            </li>
+            <li><a href="#noticias">Noticias</a></li>
+            <li><a href="#resenas">Reseñas</a></li>
+            <li><a href="#contacto">Contáctenos</a></li>
+        </ul>
+        
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="auth-container">
+                <a href="login.html" class="auth-link">Iniciar Sesión</a>
+            </div>
+            <a class="carrito" href="#" onclick="verCarrito()" role="button" aria-label="Ver carrito de compras">
+                🛒 Carrito (<span id="contador-carrito">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="inicio">
+        
+        <video autoplay muted loop playsinline id="hero-video" aria-hidden="true" poster="assets/Ex 4tp.jpg">
+            <source src="assets/video/fondo_dsi.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        
+    </section>
+
+    <section id="seccion-mensajes-clave">
+        <h2 class="titulo-mensajes-clave">DSI EXTINTORES: La Seguridad de tu Mañana</h2>
+        <p class="subtitulo-mensajes-clave">"Piensa en el fuego antes de que suceda"</p>
+    </section>
+
+
+    <section id="quienes" class="fade-in">
+        <h2>DSI Extintores: Más Allá del Equipo, Somos Confianza</h2>
+        <p>En **DSI Extintores y Equipo Contra Incendios**, no solo vendemos productos; ofrecemos **tranquilidad** y **protección proactiva**. Nuestra misión es el **cuidado de las personas**.</p>
+        <div style="display:flex; justify-content:space-around; text-align:center; gap: 20px; flex-wrap: wrap;">
+            <div>
+                <h3>Cuidado Genuino</h3>
+                <p>Priorizamos la **integridad de la vida y el patrimonio**. Elegirnos es elegir un socio que valora a tu personal.</p>
+            </div>
+            <div>
+                <h3>Aliado Confiable</h3>
+                <p>Garantizamos **entregas en tiempo y forma**. Tu preparación contra incendios está lista exactamente cuando la necesitas.</p>
+            </div>
+            <div>
+                <h3>Excelencia Operativa</h3>
+                <p>Somos una empresa agradable y segura para todos, con un servicio al cliente basado en la claridad y la honestidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="noticias" class="fade-in">
+        <h2>Noticias y Promociones Exclusivas</h2>
+        <div class="promocion">
+            ¡BIENVENIDO! 
+            <br>
+            Aplica un **10% de descuento**
+            <br>
+            en tu primera compra.
+        </div>
+        <p style="margin-top:1.5rem; font-size:1.1rem;">Usa el código: **DSIPRIMERO** al finalizar tu pedido.</p>
+    </section>
+
+    <section id="productos" class="fade-in">
+        <h2>Nuestros Productos de Seguridad Destacados</h2>
+        
+        <div style="text-align:center; margin-bottom: 2rem;">
+            <p>Explora nuestras categorías en el menú superior o descarga nuestro catálogo completo.</p>
+        </div>
+
+        <div class="productos">
+            <div class="producto" data-nombre="Extintor Universal PQS" data-id="pqs-destacado">
+                <img src="assets/PQS 1KG.jpg" alt="Extintor PQS 1kg"> 
+                <h3>Equipo Contra Incendios PQS 1K</h3>
+                <p style="font-size:0.9rem; color:#777;">Ideal para vehículos o pequeñas oficinas.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-destacado', 'Extintor Universal PQS', 'assets/PQS 1KG.jpg')">Agregar al Carrito</button>
+            </div>
+        </div> 
+
+        <div style="text-align:center; margin-top:2rem;">
+            <button id="ir-carrito" style="padding:0.8rem 1.5rem; border-radius:30px; background-color:var(--color-secundario); color:white; border:none; cursor:pointer; font-weight:bold; transition:background-color 0.3s; margin-right: 1rem;" onclick="verCarrito()">
+                Ver Carrito y Cotizar 🛒
+            </button>
+            
+            <a href="mailto:cristoleo8@outlook.com?subject=Solicitud%20de%20Cotización%20DSI" class="boton-contacto-prod">
+                Preguntar/Cotizar ✉️
+            </a>
+        </div>
+    </section>
+
+    <section id="resenas" class="fade-in">
+        <h2>Tu Opinión es Nuestra Seguridad</h2>
+        <p style="text-align:center; margin-bottom: 2rem;">Ayúdanos a mejorar. Califica tu experiencia con DSI Extintores.</p>
+        
+        <form class="resena-form" id="resena-form">
+            <input type="text" id="resena-nombre" placeholder="Tu Nombre o Correo (Requerido)" required>
+            <div style="text-align:center;">
+                <p>Tu Calificación:</p>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" required /><label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1">★</label>
+                </div>
+            </div>
+            <textarea id="resena-comentario" placeholder="Tu Reseña sobre el servicio y entrega..." rows="4"></textarea>
+            <button type="submit" style="background-color:var(--color-primario); color:white; padding:10px; border:none; border-radius:5px; cursor:pointer;">Enviar Reseña</button>
+        </form>
+    </section>
+    
+    <section id="contacto" class="fade-in">
+        <h2>Contáctenos</h2>
+        <div style="text-align:center; font-size:1.2rem;">
+            <p style="margin-bottom: 1rem;">**Estamos listos para protegerte.**</p>
+            <p>📞 <a href="https://wa.me/5510425895" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold;">WhatsApp: 55 1042 5895</a></p>
+            <p>✉️ <a href="mailto:cristoleo8@outlook.com" style="color: var(--color-primario); text-decoration: none; font-weight: bold;">Email: cristoleo8@outlook.com</a></p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+</footer>
+
+<div class="flotante" id="flotante">
+    <a href="https://wa.me/5510425895" target="_blank" aria-label="WhatsApp de DSI"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:cristoleo8@outlook.com" class="correo" aria-label="Correo electrónico de DSI"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

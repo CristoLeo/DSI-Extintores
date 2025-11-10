@@ -1,0 +1,484 @@
+:root {
+    --color-primario: #B30000;
+    --color-secundario: #444444;
+    --color-fondo: #f0f0f0;
+    --color-texto: #222222;
+    --color-resaltado: #FFD700;
+    --color-auth: #0072c6; /* Variable para el color azul de Iniciar Sesión */
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, var(--color-fondo), #ffffff);
+    color: var(--color-texto);
+    scroll-behavior: smooth;
+}
+
+/* --- Estilos de Cabecera y Navegación --- */
+header {
+    background-color: var(--color-secundario);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem; 
+}
+
+nav .logo img { 
+    height: 60px; 
+    transition: height 0.3s;
+}
+
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; 
+    justify-content: flex-end;
+}
+
+nav ul li { white-space: nowrap; }
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.95rem;
+}
+
+nav ul li a:hover { background-color: var(--color-primario); }
+ 
+/* 🔑 ESTILOS MEJORADOS PARA INICIAR SESIÓN / AUTH LINK */
+.auth-link { 
+    background-color: var(--color-auth); 
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.auth-link:hover {
+    background-color: #005bb5;
+}
+
+/* --- Estilos para Submenú de Productos (Dropdown) --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content-prod {
+    display: none;
+    position: absolute;
+    background-color: var(--color-secundario);
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1001;
+    border-top: 3px solid var(--color-primario);
+    border-radius: 0 0 5px 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-content-prod a {
+    color: white !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s, padding-left 0.3s;
+    font-size: 0.95rem;
+}
+
+.dropdown-content-prod a:hover {
+    background-color: var(--color-primario);
+    padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content-prod {
+    display: block;
+}
+ 
+/* --- Carrito y Menú de Usuario --- */
+
+.carrito {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+    margin-left: 1rem;
+    text-decoration: none; 
+}
+
+.carrito:hover { background-color: #a00000; }
+
+/* 🔑 INICIO DE ESTILOS DE MENÚ DE USUARIO (LOGUEADO) */
+.user-menu {
+    position: relative;
+    margin-left: 1rem;
+    z-index: 1010; 
+}
+.user-name-btn {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+.user-name-btn:hover {
+    background-color: #a00000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%; 
+    margin-top: 5px; 
+    background-color: white; 
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+    border-radius: 8px; 
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.dropdown-content.show-dropdown {
+    display: block;
+}
+
+.dropdown-content a {
+    color: var(--color-texto) !important; 
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--color-fondo); 
+    color: var(--color-primario) !important;
+}
+
+/* 🔑 FIN DE ESTILOS DE MENÚ DE USUARIO */
+ 
+/* --- Estilos Generales de Contenido --- */
+section { max-width: 1200px; margin: 3rem auto; padding: 1rem 2rem; }
+section h2 { 
+    text-align: center; 
+    color: var(--color-primario); 
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+}
+ 
+/* --- INICIO: SECCIÓN VIDEO DE FONDO Y TEXTOS SEPARADOS --- */
+
+#inicio {
+    position: relative; 
+    /* Altura más pequeña para que el video parezca más reducido y centrado */
+    height: calc(65vh - 75px); /* Reducido para que el video ocupe menos espacio */
+    width: 100%;
+    overflow: hidden; /* Oculta cualquier parte del video que se salga de este contenedor */
+    
+    /* Centra el contenedor del video sin contenido de texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0; 
+    margin-top: -75px; /* Compensación de la altura del header (aprox. 75px) */
+    padding-top: 75px; 
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el elemento en sí */
+    
+    min-width: 100%; 
+    min-height: 100%; 
+    width: auto;
+    height: auto;
+    
+    object-fit: cover; 
+    object-position: center center; /* Centra el contenido visible del video */
+
+    filter: brightness(60%); /* Oscurece el video */
+    z-index: 1; 
+}
+
+/* **ELIMINADO: #hero-content y sus estilos ya no van aquí, se mueven a una nueva sección** */
+
+/* --- NUEVA SECCIÓN PARA LOS MENSAJES CLAVE (DEBE AGREGARSE EN HTML) --- */
+#seccion-mensajes-clave {
+    background-color: var(--color-fondo); /* O un color que combine */
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra la sección */
+    margin-top: 0; /* Asegura que no tenga margen superior extra */
+}
+
+#seccion-mensajes-clave .titulo-mensajes-clave {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--color-secundario);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+ 
+#seccion-mensajes-clave .subtitulo-mensajes-clave {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--color-primario);
+    margin-top: 0;
+}
+/* --- FIN: SECCIÓN VIDEO DE FONDO Y TEXTOS SEPARADOS --- */
+
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.producto:hover { transform: translateY(-8px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+.producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+ 
+.producto h3 { font-size: 1.1rem; color: var(--color-secundario); }
+
+.producto button {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+
+.producto button:hover { background-color: #a00000; }
+
+#noticias {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+ 
+#noticias h2 { color: white; margin-bottom: 1rem; }
+ 
+#noticias .promocion {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-resaltado);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+}
+
+.resena-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+}
+ 
+.resena-form input, .resena-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+ 
+.rating { color: var(--color-resaltado); font-size: 1.5rem; }
+ 
+.rating input { display: none; }
+.rating label { cursor: pointer; }
+.rating input:checked ~ label { color: #ccc; }
+.rating input:checked + label { color: var(--color-resaltado); }
+ 
+footer {
+    background-color: var(--color-secundario);
+    color: white;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+ 
+/* Nuevo estilo para el botón de Contacto en Productos */
+.boton-contacto-prod {
+    background-color: #0072c6; 
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.boton-contacto-prod:hover { background-color: #005bb5; }
+
+.flotante a { 
+    background-color: #25D366; 
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    z-index: 999;
+    text-decoration: none; 
+}
+.flotante a.correo { 
+    background-color: var(--color-primario);
+    bottom: 80px; 
+}
+
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease-out, transform 1s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Media Queries (MEJORADOS) */
+@media (max-width: 900px) {
+    
+    .menu-toggle {
+        display: block; 
+    }
+
+    nav { 
+        padding: 0.5rem 1rem; 
+        flex-wrap: wrap; 
+    }
+    
+    nav .logo img { 
+        height: 55px; 
+    }
+
+    /* Estilos para el menú móvil - OCULTO por defecto */
+    nav ul { 
+        display: none; 
+        width: 100%; 
+        order: 10; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 0.5rem; 
+        background-color: rgba(68, 68, 68, 0.95); 
+        padding: 1rem 0;
+        margin-top: 0.5rem;
+    }
+
+    /* Muestra el menú cuando tiene la clase 'show' (controlado por script.js) */
+    nav ul.show { 
+        display: flex; 
+    }
+
+    nav ul li a, .auth-link { display: block; width: 100%; text-align: left; }
+    
+    /* Adaptar submenú en móvil */
+    .dropdown { width: 100%; }
+    .dropdown-content-prod { 
+        position: static; 
+        transform: none; 
+        min-width: 100%; 
+        border-radius: 0;
+        box-shadow: none; 
+        background-color: #3a3a3a; 
+    }
+    .dropdown-content-prod a { padding-left: 25px !important; }
+
+    /* Adaptar el menú de usuario en móvil */
+    .user-menu { margin: 0; width: 100%; }
+    .user-name-btn { width: 100%; border-radius: 5px; }
+    .dropdown-content {
+        position: static;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: #f8f8f8; 
+    }
+
+    /* AJUSTE DE ALTURA DEL VIDEO EN MÓVIL */
+    #inicio {
+        height: calc(55vh - 75px); /* Altura reducida también para móvil */
+        margin-top: -75px; 
+        padding-top: 75px; 
+    }
+    
+    #seccion-mensajes-clave .titulo-mensajes-clave { font-size: 2rem; }
+    #seccion-mensajes-clave .subtitulo-mensajes-clave { font-size: 1.1rem; }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos HFC-236fa | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<header>
+    <nav>
+        <div class="logo">
+            <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+        <ul id="main-nav">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#quienes">¿Quiénes Somos?</a></li>
+            <li class="dropdown">
+                <a href="#productos-hfc">Productos</a>
+                <div class="dropdown-content-prod">
+                    <a href="productos-pqs.html">Extintores de PQS</a>
+                    <a href="productos-agua.html">Extintores de Agua</a>
+                    <a href="productos-co2.html">Extintores de CO2</a>
+                    <a href="productos-hfc.html">Extintores de HFC236-fa</a>
+                    <a href="recargas-servicios.html">Recargas y Servicios</a>
+                    <a href="catalogo.html" style="font-weight: bold; background-color: #008080;">Ver Catálogo (PDF)</a>
+                </div>
+            </li>
+            <li><a href="index.html#noticias">Noticias</a></li>
+            <li><a href="index.html#resenas">Reseñas</a></li>
+            <li><a href="index.html#contacto">Contáctenos</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="auth-container"><a href="login.html" class="auth-link">Iniciar Sesión</a></div>
+            <a class="carrito" href="#" onclick="verCarrito()" role="button" aria-label="Ver carrito de compras">
+                🛒 Carrito (<span id="contador-carrito">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="productos-hfc" class="fade-in">
+        <h2>Extintores de Agente Limpio HFC-236fa</h2>
+        <p style="text-align:center; max-width: 800px; margin: 1rem auto 2rem;">El HFC-236fa es un agente limpio, ideal para incendios Clase A, B y C. Es seguro para equipos electrónicos sensibles, ya que se evapora sin dejar residuos.</p>
+
+        <div class="productos">
+            <div class="producto" data-nombre="Extintor HFC-236fa 2 kg" data-id="hfc-2kg">
+                <img src="assets/Agente limpio 2kg.jpg" alt="Extintor Agente Limpio 2 kg">
+                <h3>Agente Limpio HFC-236fa 2 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Ideal para vehículos de lujo, aeronaves pequeñas y equipos de oficina delicados.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('hfc-2kg', 'Extintor HFC-236fa 2 kg', 'assets/Agente limpio 2kg.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor HFC-236fa 4.5 kg" data-id="hfc-4-5kg">
+                <img src="assets/Agente limpio 4.5 kg.jpg" alt="Extintor Agente Limpio 4.5 kg">
+                <h3>Agente Limpio HFC-236fa 4.5 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Excelente opción para laboratorios, salas de servidores y equipos de telecomunicaciones.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('hfc-4-5kg', 'Extintor HFC-236fa 4.5 kg', 'assets/Agente limpio 4.5 kg.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor HFC-236fa 6 kg" data-id="hfc-6kg">
+                <img src="assets/Agente limpio 6 kg.jpg" alt="Extintor Agente Limpio 6 kg">
+                <h3>Agente Limpio HFC-236fa 6 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Máxima protección sin residuos para áreas con tecnología crítica y alto valor.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('hfc-6kg', 'Extintor HFC-236fa 6 kg', 'assets/Agente limpio 6 kg.jpg')">Agregar al Carrito</button>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:3rem;">
+            <a href="mailto:cristoleo8@outlook.com?subject=Solicitud%20de%20Cotización%20HFC" class="boton-contacto-prod">
+                Preguntas y Especificaciones 📞
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+</footer>
+
+<div class="flotante" id="flotante">
+    <a href="https://wa.me/5510425895" target="_blank" aria-label="WhatsApp de DSI"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:cristoleo8@outlook.com" class="correo" aria-label="Correo electrónico de DSI"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

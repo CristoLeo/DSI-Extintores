@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos PQS | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<header>
+    <nav>
+        <div class="logo">
+            <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo">
+        </div>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+        <ul id="main-nav">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#quienes">¿Quiénes Somos?</a></li>
+            <li class="dropdown">
+                <a href="#productos-pqs">Productos</a>
+                <div class="dropdown-content-prod">
+                    <a href="productos-pqs.html">Extintores de PQS</a>
+                    <a href="productos-agua.html">Extintores de Agua</a>
+                    <a href="productos-co2.html">Extintores de CO2</a>
+                    <a href="productos-hfc.html">Extintores de HFC236-fa</a>
+                    <a href="recargas-servicios.html">Recargas y Servicios</a>
+                    <a href="catalogo.html" style="font-weight: bold; background-color: #008080;">Ver Catálogo (PDF)</a>
+                </div>
+            </li>
+            <li><a href="index.html#noticias">Noticias</a></li>
+            <li><a href="index.html#resenas">Reseñas</a></li>
+            <li><a href="index.html#contacto">Contáctenos</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="auth-container"><a href="login.html" class="auth-link">Iniciar Sesión</a></div>
+            <a class="carrito" href="#" onclick="verCarrito()" role="button" aria-label="Ver carrito de compras">
+                🛒 Carrito (<span id="contador-carrito">0</span>)
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="productos-pqs" class="fade-in">
+        <h2>Extintores de Polvo Químico Seco (PQS)</h2>
+        <p style="text-align:center; max-width: 800px; margin: 1rem auto 2rem;">Los extintores PQS 
+
+[Image of Red fire extinguisher]
+ son versátiles y eficaces contra incendios Clase A (materiales sólidos), Clase B (líquidos inflamables) y Clase C (equipos eléctricos).</p>
+
+        <div class="productos">
+            <div class="producto" data-nombre="Extintor PQS 1 kg" data-id="pqs-1kg">
+                <img src="assets/PQS 1KG.jpg" alt="Extintor PQS 1 kg">
+                <h3>PQS 1 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Ideal para vehículos y uso doméstico.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-1kg', 'Extintor PQS 1 kg', 'assets/PQS 1KG.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS 4 kg" data-id="pqs-4kg">
+                <img src="assets/PQS 4K.jpg" alt="Extintor PQS 4 kg">
+                <h3>PQS 4 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Apto para oficinas y pequeños negocios.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-4kg', 'Extintor PQS 4 kg', 'assets/PQS 4K.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS 6 kg" data-id="pqs-6kg">
+                <img src="assets/PQS 6K.jpg" alt="Extintor PQS 6 kg">
+                <h3>PQS 6 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Cobertura estándar para áreas comerciales.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-6kg', 'Extintor PQS 6 kg', 'assets/PQS 6K.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS 9 kg" data-id="pqs-9kg">
+                <img src="assets/PQS 9K.png" alt="Extintor PQS 9 kg">
+                <h3>PQS 9 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Recomendado para naves industriales y bodegas.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-9kg', 'Extintor PQS 9 kg', 'assets/PQS 9K.png')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS 12 kg" data-id="pqs-12kg">
+                <img src="assets/PQS 12K.jpg" alt="Extintor PQS 12 kg">
+                <h3>PQS 12 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Alta capacidad, perfecto para grandes industrias.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-12kg', 'Extintor PQS 12 kg', 'assets/PQS 12K.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS Móvil 32 kg" data-id="pqs-32kg">
+                <img src="assets/PQS 32KG.jpg" alt="Extintor PQS Móvil 32 kg">
+                <h3>PQS Móvil 32 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Unidad rodante de respuesta rápida.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-32kg', 'Extintor PQS Móvil 32 kg', 'assets/PQS 32KG.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS Móvil 50 kg" data-id="pqs-50kg">
+                <img src="assets/PQS 50KG.jpg" alt="Extintor PQS Móvil 50 kg">
+                <h3>PQS Móvil 50 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">Gran capacidad para riesgo elevado.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-50kg', 'Extintor PQS Móvil 50 kg', 'assets/PQS 50KG.jpg')">Agregar al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Extintor PQS Móvil 70 kg" data-id="pqs-70kg">
+                <img src="assets/PQS 50KG.jpg" alt="Extintor PQS Móvil 70 kg">
+                <h3>PQS Móvil 70 KG</h3>
+                <p style="font-size:0.9rem; color:#777;">La máxima capacidad rodante para áreas críticas.</p>
+                <button class="agregar-carrito" onclick="agregarAlCarrito('pqs-70kg', 'Extintor PQS Móvil 70 kg', 'assets/PQS 50KG.jpg')">Agregar al Carrito</button>
+            </div>
+            
+        </div>
+        
+        <div style="text-align:center; margin-top:3rem;">
+            <a href="mailto:cristoleo8@outlook.com?subject=Solicitud%20de%20Cotización%20PQS" class="boton-contacto-prod">
+                Preguntas y Especificaciones 📞
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+</footer>
+
+<div class="flotante" id="flotante">
+    <a href="https://wa.me/5510425895" target="_blank" aria-label="WhatsApp de DSI"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:cristoleo8@outlook.com" class="correo" aria-label="Correo electrónico de DSI"><i class="fas fa-envelope"></i></a>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

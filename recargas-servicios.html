@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recargas y Servicios | DSI Extintores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght{700}&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para la página de recargas (puedes mover esto a style.css) */
+        main {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Importante para que el padding no cambie el ancho */
+        }
+        .form-container textarea {
+            resize: vertical;
+        }
+        /* Estilo del botón de enviar */
+        .form-container button[type="submit"] {
+            padding: 12px 20px;
+            background-color: #ff4500; /* Color primario de DSI */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .form-container button[type="submit"]:hover {
+            background-color: #cc3700;
+        }
+        /* Estilos para el mensaje de éxito */
+        #mensaje-exito {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            background-color: #e2f0e3;
+            max-width: 500px;
+            color: #155724;
+        }
+        #mensaje-exito a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #008080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #mensaje-exito a:hover {
+            background-color: #005f5f;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav style="justify-content: center;">
+            <div class="logo" style="margin: 0;">
+                <a href="index.html" aria-label="Ir a la página de inicio">
+                    <img src="assets/DSI logo.jpg" alt="DSI EXTINTORES Logo" style="max-height: 60px;">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Solicitud de Recargas y Servicios</h1>
+        <p>Utiliza el siguiente formulario para especificar el tipo de servicio (recarga, mantenimiento, prueba hidrostática, etc.) que requieres. Nos pondremos en contacto contigo a la brevedad para cotizar.</p>
+        
+        <div class="form-container" id="form-recargas-container">
+            <form id="servicio-form">
+                <input type="text" id="nombre" placeholder="Tu Nombre Completo (Requerido)" required>
+                <input type="email" id="email" placeholder="Tu Correo Electrónico (Requerido)" required>
+                <input type="text" id="telefono" placeholder="Tu Teléfono de Contacto (Opcional)">
+
+                <textarea id="detalle" placeholder="Detalle de la solicitud: Tipo de extintor, capacidad (ej. PQS 6kg), cantidad, servicio requerido (recarga, mantenimiento, etc.)." rows="6" required></textarea>
+
+                <button type="submit">Enviar Solicitud de Servicio</button>
+            </form>
+        </div>
+        
+        <!-- Mensaje de éxito con botón de regreso -->
+        <div id="mensaje-exito" role="alert">
+            <p style="font-size: 1.1rem; font-weight: bold;">
+                ¡Solicitud lista para enviar!
+            </p>
+            <p>
+                Se ha abierto tu aplicación de correo con los detalles de tu solicitud. Por favor, asegúrate de hacer clic en **"Enviar"** en esa ventana para que tu mensaje nos llegue correctamente.
+            </p>
+            <a href="index.html">Volver al Menú Principal</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 **DSI EXTINTORES** — Piensa en el fuego antes de que suceda.
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
